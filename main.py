@@ -32,6 +32,12 @@ while True:
     if len(response['items']) == 0:
         break
 
-    pprint(response)
+    print(response['items'][0]['track']['artists'][0]['name'])
+    #for i in range(len(response['items'])):
+    #    print(response['items'][0]['track']['artists'][0]['name'])
+        
     offset = offset + len(response['items'])
     print(offset, "/", response['total'])
+
+    
+    
