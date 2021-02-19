@@ -62,9 +62,7 @@ for x, y in x.items():
     labels.append(x)
     size.append(y)
 
-matplotlib.rc('font', family = 'serif')
-
-plt.pie(size, labels=None)
+plt.pie(size, labels=size, colors=None)
 plt.axis('equal')
 plt.legend(title = "artists", prop={'size': 15}, loc=(0.9, -0.1), labels=labels, frameon=False)
 
