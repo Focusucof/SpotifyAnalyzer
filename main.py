@@ -19,7 +19,7 @@ sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(
 pl_id = 'spotify:playlist:7pEHQIFPFnELcHSIYSyzsP'
 offset = 0
 
-
+artists = []
 
 while True:
     response = sp.playlist_items(
@@ -32,7 +32,6 @@ while True:
     if len(response['items']) == 0:
         break
 
-    artists = []
     
     for count in range(len(response['items'])):
         print(response['items'][count]['track']['artists'][0]['name'])
