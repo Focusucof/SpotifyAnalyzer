@@ -51,7 +51,17 @@ def countFreq(arr):
     return collections.Counter(arr)
 
 x = countFreq(artists)
-d = {'a': 1, 'b': 7}
-plt.bar(*zip(*x.items()))
+
+labels = []
+size = []
+
+for x, y in x.items():
+    labels.append(x)
+    size.append(y)
+
+plt.pie(size, labels=labels)
+
+plt.axis('equal')
 plt.show()
+
 pprint(x)
