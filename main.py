@@ -23,6 +23,7 @@ offset = 0
 
 artists = []
 
+#requests section
 while True:
     response = sp.playlist_items(
         pl_id,
@@ -33,15 +34,10 @@ while True:
     
     if len(response['items']) == 0:
         break
-
     
     for count in range(len(response['items'])):
         print(response['items'][count]['track']['artists'][0]['name'])
         artists.append(response['items'][count]['track']['artists'][0]['name'])
-    
-    
-    #for i in range(len(response['items'])):
-    #    print(response['items'][0]['track']['artists'][0]['name'])
         
     offset = offset + len(response['items'])
     print(offset, "/", response['total'])
@@ -57,12 +53,14 @@ pprint(x)
 labels = []
 size = []
 
+#splits labels and values into sperate arrays for the graph
 for x, y in x.items():
     labels.append(x)
     size.append(y)
 
+#moreThanOne removes artists who only appear once
+#sizeIndexPos stores the indices of where the the ones were removed
 moreThanOne = size
-newLabels = labels
 sizeIndexPos = []
 
 print(moreThanOne)
@@ -72,9 +70,9 @@ for i in moreThanOne:
     sizeIndexPos.append(index)
     moreThanOne.remove(1)
 
+print(moreThanOne)
 
-
-
+#chart section
 colors = ['#ff9999','#66b3ff','#99ff99','#ffcc99']
 
 plt.pie(moreThanOne, labels=size, colors=colors, autopct='%1.1f%%', startangle=90, pctdistance=0.85)
