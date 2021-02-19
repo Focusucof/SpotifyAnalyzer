@@ -32,7 +32,9 @@ while True:
     if len(response['items']) == 0:
         break
 
-    print(response['items'][0]['track']['artists'][0]['name'])
+
+    for i in range(len(response['items'])):
+        print(response['items'][i]['track']['artists'][0]['name'])
     #for i in range(len(response['items'])):
     #    print(response['items'][0]['track']['artists'][0]['name'])
         
