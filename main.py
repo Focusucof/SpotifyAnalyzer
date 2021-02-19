@@ -61,11 +61,25 @@ for x, y in x.items():
     labels.append(x)
     size.append(y)
 
+moreThanOne = size
+newLabels = labels
+sizeIndexPos = []
+
+print(moreThanOne)
+
+for i in moreThanOne:
+    index = moreThanOne.index(1)
+    sizeIndexPos.append(index)
+    moreThanOne.remove(1)
+
+
+
+
 colors = ['#ff9999','#66b3ff','#99ff99','#ffcc99']
 
-plt.pie(sizeGreaterThanOne, labels=None, colors=colors, autopct='%1.1f%%', startangle=90, pctdistance=0.85)
+plt.pie(moreThanOne, labels=size, colors=colors, autopct='%1.1f%%', startangle=90, pctdistance=0.85)
 plt.axis('equal')
-plt.legend(title = "artists", prop={'size': 15}, loc=(0.9, -0.1), labels=labels, frameon=False)
+plt.legend(title = "artists", prop={'size': 15}, loc=(0.9, 0.5), labels=labels, frameon=False)
 
 fig = plt.gcf()
 fig.set_size_inches(16, 10.8)
