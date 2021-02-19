@@ -6,6 +6,7 @@ import os
 import json
 import collections
 from matplotlib import pyplot as plt
+import matplotlib
 
 load_dotenv()
 CLIENTID = os.getenv('CLIENTID')
@@ -51,17 +52,25 @@ def countFreq(arr):
     return collections.Counter(arr)
 
 x = countFreq(artists)
+pprint(x)
 
 labels = []
 size = []
+
 
 for x, y in x.items():
     labels.append(x)
     size.append(y)
 
-plt.pie(size, labels=labels)
+matplotlib.rc('font', family = 'serif')
 
+plt.pie(size, labels=None)
 plt.axis('equal')
+plt.legend(title = "artists", prop={'size': 15}, loc=(0.9, -0.1), labels=labels, frameon=False)
+
+fig = matplotlib.pyplot.gcf()
+fig.set_size_inches(16, 10.8)
+fig.savefig('pie.png', dpi=100, transparent=False)
+
 plt.show()
 
-pprint(x)
