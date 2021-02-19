@@ -57,17 +57,23 @@ pprint(x)
 labels = []
 size = []
 
-
 for x, y in x.items():
     labels.append(x)
     size.append(y)
 
-plt.pie(size, labels=size, colors=None)
+colors = ['#ff9999','#66b3ff','#99ff99','#ffcc99']
+
+plt.pie(sizeGreaterThanOne, labels=None, colors=colors, autopct='%1.1f%%', startangle=90, pctdistance=0.85)
 plt.axis('equal')
 plt.legend(title = "artists", prop={'size': 15}, loc=(0.9, -0.1), labels=labels, frameon=False)
 
-fig = matplotlib.pyplot.gcf()
+fig = plt.gcf()
 fig.set_size_inches(16, 10.8)
+
+centre_circle = plt.Circle((0,0),0.30,fc='white')
+fig.gca().add_artist(centre_circle)
+plt.tight_layout()
+
 fig.savefig('pie.png', dpi=100, transparent=False)
 
 plt.show()
