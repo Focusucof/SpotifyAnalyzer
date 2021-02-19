@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 import os
 import json
 import collections
+from matplotlib import pyplot as plt
 
 load_dotenv()
 CLIENTID = os.getenv('CLIENTID')
@@ -37,8 +38,6 @@ while True:
         print(response['items'][count]['track']['artists'][0]['name'])
         artists.append(response['items'][count]['track']['artists'][0]['name'])
     
-    print(artists)
-    
     
     #for i in range(len(response['items'])):
     #    print(response['items'][0]['track']['artists'][0]['name'])
@@ -46,15 +45,13 @@ while True:
     offset = offset + len(response['items'])
     print(offset, "/", response['total'])
 
+print(artists)
 
 def countFreq(arr):
     return collections.Counter(arr)
 
 x = countFreq(artists)
-print(x)
-
-
-
-
-
-
+d = {'a': 1, 'b': 7}
+plt.bar(*zip(*x.items()))
+plt.show()
+pprint(x)
