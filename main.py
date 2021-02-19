@@ -4,7 +4,7 @@ from pprint import pprint
 from dotenv import load_dotenv
 import os
 import json
-from collections import Counter
+import collections
 
 load_dotenv()
 CLIENTID = os.getenv('CLIENTID')
@@ -32,14 +32,30 @@ while True:
     if len(response['items']) == 0:
         break
 
-
-    for i in range(len(response['items'])):
-        print(response['items'][i]['track']['artists'][0]['name'])
+    artists = []
+    
+    for count in range(len(response['items'])):
+        print(response['items'][count]['track']['artists'][0]['name'])
+        artists.append(response['items'][count]['track']['artists'][0]['name'])
+    
+    print(artists)
+    
+    
     #for i in range(len(response['items'])):
     #    print(response['items'][0]['track']['artists'][0]['name'])
         
     offset = offset + len(response['items'])
     print(offset, "/", response['total'])
 
-    
-    
+
+def countFreq(arr):
+    return collections.Counter(arr)
+
+x = countFreq(artists)
+print(x)
+
+
+
+
+
+
