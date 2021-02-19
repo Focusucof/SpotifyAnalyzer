@@ -73,7 +73,7 @@ for i in moreThanOne:
 print(moreThanOne)
 
 #chart section
-colors = ['#ff9999','#66b3ff','#99ff99','#ffcc99']
+colors = ['#ff9999','#99ff99','#ffcc99', '#85E3FF', '#B28DFF', '#F6A6FF']
 
 plt.pie(moreThanOne, labels=size, colors=colors, autopct='%1.1f%%', startangle=90, pctdistance=0.85)
 plt.axis('equal')
@@ -90,3 +90,4 @@ fig.savefig('pie.png', dpi=100, transparent=False)
 
 plt.show()
 
+#color highlight extension by sergii naumov
