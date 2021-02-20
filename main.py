@@ -50,34 +50,24 @@ def countFreq(arr):
 x = countFreq(artists)
 pprint(x)
 
+freqGreaterThanOne = {key:val for key, val in x.items() if val != 1}
+
 labels = []
 size = []
 
 #splits labels and values into sperate arrays for the graph
-for x, y in x.items():
+for x, y in freqGreaterThanOne.items():
     labels.append(x)
     size.append(y)
 
-#moreThanOne removes artists who only appear once
-#sizeIndexPos stores the indices of where the the ones were removed
-moreThanOne = size
-sizeIndexPos = []
-
-print(moreThanOne)
-
-for i in moreThanOne:
-    index = moreThanOne.index(1)
-    sizeIndexPos.append(index)
-    moreThanOne.remove(1)
-
-print(moreThanOne)
 
 #chart section
-colors = ['#ff9999','#99ff99','#ffcc99', '#85E3FF', '#B28DFF', '#F6A6FF']
+colors = ['#ff9999', '#ffcc99', '#85E3FF', '#B28DFF', '#F6A6FF', '#ffe079', '#00ffaa']
 
-plt.pie(moreThanOne, labels=size, colors=colors, autopct='%1.1f%%', startangle=90, pctdistance=0.85)
+plt.pie(size, labels=labels, colors=colors, autopct='%1.1f%%', startangle=90, pctdistance=0.85)
 plt.axis('equal')
-plt.legend(title = "artists", prop={'size': 15}, loc=(0.9, 0.5), labels=labels, frameon=False)
+legend = plt.legend(title = "artists", prop={'size': 15}, loc=(0.9, 0.5), labels=labels, frameon=False)
+plt.setp(legend.get_title(), fontsize='xx-large')
 
 fig = plt.gcf()
 fig.set_size_inches(16, 10.8)
@@ -89,5 +79,3 @@ plt.tight_layout()
 fig.savefig('pie.png', dpi=100, transparent=False)
 
 plt.show()
-
-#color highlight extension by sergii naumov
