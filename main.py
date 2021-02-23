@@ -8,6 +8,7 @@ import collections
 from matplotlib import pyplot as plt
 import matplotlib
 from flask import Flask, render_template, request
+import shutil
 
 app = Flask(__name__)
 
@@ -82,6 +83,10 @@ def getandsend(pl_id, offset):    #requests section
     plt.tight_layout()
 
     fig.savefig('pie.png', dpi=100, transparent=False)
+    
+    source = r"./pie.png"
+    destination = r"./static/images/pie.png"
+    shutil.move(source, destination)
 
 @app.route('/')
 def index():
@@ -91,4 +96,4 @@ def index():
 def formRes():
     pl_id = request.form['playlist']
     getandsend(pl_id, offset)
-    return pl_id
+    return render_template('result.html')
