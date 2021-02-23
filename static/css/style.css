@@ -1,4 +1,23 @@
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 h1 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
+}
+
+.img {
+    display: grid;
+    height: 100%;
+    transform: translateX(15%);
+}
+
+.fit {
+    max-width: 100%;
+    width: auto;
+    height: 90vh;
+    
+    
 }

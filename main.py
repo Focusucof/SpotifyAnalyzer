@@ -27,9 +27,12 @@ offset = 0
 
 
 
-artists = []
+
 
 def getandsend(pl_id, offset):    #requests section
+
+    artists = []
+
     while True:
         response = sp.playlist_items(
             pl_id,
@@ -70,9 +73,9 @@ def getandsend(pl_id, offset):    #requests section
     #chart section
     colors = ['#ff9999', '#ffcc99', '#85E3FF', '#B28DFF', '#F6A6FF', '#ffe079', '#00ffaa']
 
-    plt.pie(size, labels=labels, colors=colors, autopct='%1.1f%%', startangle=90, pctdistance=0.85)
+    plt.pie(size, labels=None, colors=colors, autopct='%1.1f%%', startangle=90, pctdistance=0.85)
     plt.axis('equal')
-    legend = plt.legend(title = "artists", prop={'size': 15}, loc=(0.9, 0.5), labels=labels, frameon=False)
+    legend = plt.legend(title = "Artists", prop={'size': 15}, loc=(0.9, 0.5), labels=labels, frameon=False)
     plt.setp(legend.get_title(), fontsize='xx-large')
 
     fig = plt.gcf()
@@ -82,18 +85,7 @@ def getandsend(pl_id, offset):    #requests section
     fig.gca().add_artist(centre_circle)
     plt.tight_layout()
 
-    fig.savefig('pie.png', dpi=100, transparent=False)
-    
-    source = r"./pie.png"
-    destination = r"./static/images/pie.png"
-    shutil.move(source, destination)
+    fig.savefig('pie.png', transparent=False)
+    shutil.move('./pie.png', './static/pie.png')
 
-@app.route('/')
-def index():
-    return render_template('index.html')
 
-@app.route('/', methods=['POST'])
-def formRes():
-    pl_id = request.form['playlist']
-    getandsend(pl_id, offset)
-    return render_template('result.html')

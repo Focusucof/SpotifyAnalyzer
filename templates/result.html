@@ -5,7 +5,17 @@
             <link rel="stylesheet" href="{{ url_for('static', filename = 'css/style.css') }}">
         </head>
         <body>
-            <h1>hello</h1>
-            <img src="{{ url_for('static', filename = 'images/pie.png') }}">
+            <h1>Your playlist is made up of...</h1>
+            <div class="img">
+                <img class="fit" src="{{ url_for('static', filename = 'pie.png') }}">
+
+
+                <script language="javascript" type="text/javascript">
+                    var d = new Date(); 
+                    document.getElementById("graph").src = 
+                    "{{ url_for('static', filename = 'pie.png') }}" + 
+                    d.getTime();
+                </script>
+            </div> 
         </body>
     </html>
