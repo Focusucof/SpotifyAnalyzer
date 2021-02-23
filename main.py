@@ -22,7 +22,7 @@ sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(
     )
 )
 
-pl_id = 'spotify:playlist:7pEHQIFPFnELcHSIYSyzsP'
+pl_id = None
 offset = 0
 
 
@@ -73,7 +73,7 @@ def getandsend(pl_id, offset):    #requests section
     #chart section
     colors = ['#ff9999', '#ffcc99', '#85E3FF', '#B28DFF', '#F6A6FF', '#ffe079', '#00ffaa']
 
-    plt.pie(size, labels=None, colors=colors, autopct='%1.1f%%', startangle=90, pctdistance=0.85)
+    plt.pie(size, labels=None, colors=colors, startangle=90) #removed autopct='%1.1f%%' and pctdistance=0.85
     plt.axis('equal')
     legend = plt.legend(title = "Artists", prop={'size': 15}, loc=(0.9, 0.5), labels=labels, frameon=False)
     plt.setp(legend.get_title(), fontsize='xx-large')
