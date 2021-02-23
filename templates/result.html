@@ -8,14 +8,6 @@
             <h1>Your playlist is made up of...</h1>
             <div class="img">
                 <img class="fit" src="{{ url_for('static', filename = 'pie.png') }}">
-
-
-                <script language="javascript" type="text/javascript">
-                    var d = new Date(); 
-                    document.getElementById("graph").src = 
-                    "{{ url_for('static', filename = 'pie.png') }}" + 
-                    d.getTime();
-                </script>
             </div> 
         </body>
     </html>
