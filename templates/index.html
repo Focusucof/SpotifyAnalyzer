@@ -2,14 +2,19 @@
     <html>
         <head>
             <title>Spotify</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <link rel="stylesheet" href="{{ url_for('static', filename = 'css/style.css') }}">
-            <link rel="stylesheet" href="../static/css/style.css">
         </head>
         <body>
             <h1>Spotify Analyzer</h1>
-            <form method="POST">
-                <input name="playlist">
-                <input type="submit">
-            </form>
+            <div class="form">
+                <form method="POST">
+                    <input name="playlist">
+                    <input type="submit">
+                </form>
+            </div>
+            <nav>
+                <a href="{{ url_for('static', filename = 'howitworks.html') }}">How it works</a>
+            </nav>
         </body>
     </html>

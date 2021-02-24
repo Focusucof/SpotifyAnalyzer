@@ -2,12 +2,13 @@
     <html>
         <head>
             <title>Spotify</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <link rel="stylesheet" href="{{ url_for('static', filename = 'css/style.css') }}">
         </head>
         <body>
             <h1>Your playlist is made up of...</h1>
             <div class="img">
-                <img class="fit" src="{{ url_for('static', filename = 'pie.png') }}">
+                <img class="center" src="{{ url_for('static', filename = 'pie.png') }}">
             </div> 
         </body>
     </html>
