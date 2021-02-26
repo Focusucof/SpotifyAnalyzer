@@ -7,7 +7,7 @@ import json
 import collections
 from matplotlib import pyplot as plt
 import matplotlib
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, Response
 import shutil
 
 app = Flask(__name__)
@@ -24,10 +24,6 @@ sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(
 
 pl_id = None
 offset = 0
-
-
-
-
 
 def getandsend(pl_id, offset):    #requests section
 
@@ -87,5 +83,3 @@ def getandsend(pl_id, offset):    #requests section
 
     fig.savefig('pie.png', transparent=False)
     shutil.move('./pie.png', './static/pie.png')
-
-
