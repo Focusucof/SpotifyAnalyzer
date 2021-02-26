@@ -67,7 +67,7 @@ def getandsend(pl_id, offset):    #requests section
 
 
     #chart section
-    colors = ['#ff9999', '#ffcc99', '#85E3FF', '#B28DFF', '#F6A6FF', '#ffe079', '#00ffaa']
+    colors = ['#ff9999', '#ffcc99', '#85E3FF', '#B28DFF', '#F6A6FF', '#00ffaa', '#ffe079', '#efff9e', '#ff99bd']
 
     plt.pie(size, labels=None, colors=colors, startangle=90) #removed autopct='%1.1f%%' and pctdistance=0.85
     plt.axis('equal')
