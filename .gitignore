@@ -1,3 +1,4 @@
 .env
 pie.png
 __pycache__
+.cache

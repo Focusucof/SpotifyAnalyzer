@@ -1,34 +1,41 @@
+#external dependencies
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
-from pprint import pprint
 from dotenv import load_dotenv
+from matplotlib import pyplot as plt
+from flask import Flask, render_template, request, Response
+
+#built-in dependencies
 import os
 import json
 import collections
-from matplotlib import pyplot as plt
-import matplotlib
-from flask import Flask, render_template, request, Response
 import shutil
+from pprint import pprint
 
-app = Flask(__name__)
-
+#load client credentials from .env file
 load_dotenv()
+
+#constants
+app = Flask(__name__)
 CLIENTID = os.getenv('CLIENTID')
 CLIENTSECRET = os.getenv('CLIENTSECRET')
 
+#create a new spotify object
 sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(
-    client_id=CLIENTID,
-    client_secret=CLIENTSECRET
+        client_id=CLIENTID,
+        client_secret=CLIENTSECRET
     )
 )
 
 pl_id = None
-offset = 0
+#offset = 0
 
-def getandsend(pl_id, offset):    #requests section
+def getandsend(pl_id, offset = 0):    #requests section
 
     artists = []
 
+    #get the track data
+    #break
     while True:
         response = sp.playlist_items(
             pl_id,
@@ -49,8 +56,6 @@ def getandsend(pl_id, offset):    #requests section
 
     print(artists)
 
-    def countFreq(arr):
-        return collections.Counter(arr)
 
     x = countFreq(artists)
     pprint(x)
@@ -83,3 +88,6 @@ def getandsend(pl_id, offset):    #requests section
 
     fig.savefig('pie.png', transparent=False)
     shutil.move('./pie.png', './static/pie.png')
+
+def countFreq(arr):
+    return collections.Counter(arr)
