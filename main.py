@@ -20,22 +20,31 @@ app = Flask(__name__)
 CLIENTID = os.getenv('CLIENTID')
 CLIENTSECRET = os.getenv('CLIENTSECRET')
 
-#create a new spotify object
+#create a new spotify object and authenticate with the WebAPI
 sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(
         client_id=CLIENTID,
         client_secret=CLIENTSECRET
     )
 )
 
-pl_id = None
-#offset = 0
+def getChart(pl_id, offset = 0):    # request and chart section
 
-def getandsend(pl_id, offset = 0):    #requests section
+    # I don't think I will ever understand this fully but...
+    # response can only hold 100 tracks, so if the tracks gotten is less than the 
+    # total expected, another request is made until the reponse is equal to 0.
+    # 
+    # The main artist from each track is added to the artists array, then sorted by frequency
+    # and added to freqGreaterThanOne if the artist appears more than 1 time
+
+    # TODO: 
+    #   - count artist features and collabs
+    #   - add more colours for the pie chart
+    #   - order pie chart from greatest to least
+    #   - order legend
+    #   - rework css and create a theme for the app
 
     artists = []
 
-    #get the track data
-    #break
     while True:
         response = sp.playlist_items(
             pl_id,
@@ -54,11 +63,11 @@ def getandsend(pl_id, offset = 0):    #requests section
         offset = offset + len(response['items'])
         print(offset, "/", response['total'])
 
-    print(artists)
+    #print(artists)
 
 
     x = countFreq(artists)
-    pprint(x)
+    #pprint(x)
 
     freqGreaterThanOne = {key:val for key, val in x.items() if val != 1}
 

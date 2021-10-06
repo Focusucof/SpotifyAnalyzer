@@ -8,7 +8,7 @@ def index():
 @app.route('/', methods=['POST'])
 def formRes():
     pl_id = request.form['playlist']
-    getandsend(pl_id, offset = 0)
+    getChart(pl_id, offset = 0)
     return render_template('result.html')
 
 #disables caching
